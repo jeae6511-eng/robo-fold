@@ -1,74 +1,486 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ROBO Fold — Предзаказ</title>
+<section id="preorder" class="order-section">
+  <div class="order-card">
+
+    <div class="order-info">
+      <span class="order-badge">ROBO FOLD</span>
+      <h2>Выбери свой ROBO Fold</h2>
+      <p>Настрой смартфон под себя и отправь выбранную конфигурацию нам на Email.</p>
+
+      <div class="order-phone">
+        <div class="mini-phone">
+          <div class="mini-camera">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mini-logo">ROBO</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="configurator">
+
+      <div class="option">
+        <label>Память</label>
+
+        <div class="choices">
+          <button type="button" class="choice active" data-storage="256 GB" data-price="899">
+            <b>256 GB</b>
+            <small>$899</small>
+          </button>
+
+          <button type="button" class="choice" data-storage="512 GB" data-price="999">
+            <b>512 GB</b>
+            <small>$999</small>
+          </button>
+
+          <button type="button" class="choice" data-storage="1 TB" data-price="1199">
+            <b>1 TB</b>
+            <small>$1199</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="option">
+        <label>Цвет</label>
+
+        <div class="colors">
+          <button type="button" class="color active" data-color="Titanium Black">
+            <span class="dot black"></span>
+            <small>Black</small>
+          </button>
+
+          <button type="button" class="color" data-color="Silver">
+            <span class="dot silver"></span>
+            <small>Silver</small>
+          </button>
+
+          <button type="button" class="color" data-color="Blue">
+            <span class="dot blue"></span>
+            <small>Blue</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div>
+          <span>Конфигурация</span>
+          <strong id="selectedStorage">256 GB</strong>
+        </div>
+
+        <div>
+          <span>Цвет</span>
+          <strong id="selectedColor">Titanium Black</strong>
+        </div>
+
+        <div class="total">
+          <span>Цена</span>
+          <strong id="selectedPrice">$899</strong>
+        </div>
+      </div>
+
+      <form
+        action="https://formsubmit.co/Jeae6511@gmail.com"
+        method="POST"
+      >
+
+        <input type="hidden" name="_subject" value="ROBO Fold — выбранная конфигурация">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
+        <input type="hidden" id="storageInput" name="Память" value="256 GB">
+        <input type="hidden" id="colorInput" name="Цвет" value="Titanium Black">
+        <input type="hidden" id="priceInput" name="Цена" value="$899">
+
+        <input
+          type="text"
+          name="Имя"
+          placeholder="Ваше имя"
+          required
+        >
+
+        <input
+          type="email"
+          name="Email"
+          placeholder="Ваш Email"
+          required
+        >
+
+        <input
+          type="tel"
+          name="Телефон"
+          placeholder="Номер телефона"
+          required
+        >
+
+        <button class="send-button" type="submit">
+          <span>Отправить конфигурацию</span>
+          <span class="arrow">→</span>
+        </button>
+
+      </form>
+
+      <div class="email-note">
+        ✉️ После отправки информация о выбранном ROBO Fold придёт на Email.
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#080b12;color:#fff}
-.wrap{max-width:1050px;margin:auto;padding:24px}
-nav{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:24px}
-nav a{color:#aeb7ca;text-decoration:none;margin-left:20px}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;min-height:75vh}
-h1{font-size:clamp(48px,7vw,82px);margin:8px 0}.tag{color:#7f9cff;font-weight:700}
-p{color:#adb6c8;line-height:1.6;font-size:18px}
-.phone{height:430px;width:260px;margin:auto;border:5px solid #333b4d;border-radius:35px;background:linear-gradient(145deg,#1d2535,#0c1019);box-shadow:0 25px 70px #000;position:relative}
-.camera{position:absolute;top:22px;left:20px;width:85px;height:58px;border-radius:25px;background:#10131a;border:2px solid #4a5367}
-.lens{display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid #7b8496;margin:18px 5px}
-.screen{position:absolute;left:15px;right:15px;top:95px;bottom:15px;border-radius:18px;background:linear-gradient(145deg,#101827,#182a51)}
-.btn{display:inline-block;background:#fff;color:#080b12;padding:15px 23px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer;font-size:16px}
-section{padding:65px 0}h2{font-size:36px}
-.card{background:#111725;border:1px solid #263047;border-radius:20px;padding:28px}
-form{display:grid;gap:14px;max-width:600px}
-input,select{width:100%;padding:15px;border-radius:10px;border:1px solid #35405a;background:#0b101b;color:#fff;font-size:16px}
-.notice{display:none;margin-top:16px;padding:15px;border-radius:12px;background:#172a20;color:#9ff0bb}
-@media(max-width:750px){.hero{grid-template-columns:1fr;text-align:center}.phone{height:360px;width:220px}}
+.order-section {
+  padding: 100px 0;
+}
+
+.order-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 45px;
+  border: 1px solid #26344a;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 15% 20%, #2367ff20, transparent 35%),
+    radial-gradient(circle at 90% 80%, #8b5cff18, transparent 35%),
+    #090e16;
+  box-shadow: 0 30px 100px #00000070;
+}
+
+.order-info h2 {
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: .95;
+  letter-spacing: -3px;
+  margin: 18px 0;
+}
+
+.order-info p {
+  color: #9ba8ba;
+  line-height: 1.7;
+  max-width: 450px;
+}
+
+.order-badge {
+  display: inline-block;
+  padding: 8px 13px;
+  border: 1px solid #315b8c;
+  border-radius: 999px;
+  color: #8fc3ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.order-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 330px;
+}
+
+.mini-phone {
+  width: 180px;
+  height: 300px;
+  position: relative;
+  border-radius: 32px;
+  border: 7px solid #202b3c;
+  background:
+    radial-gradient(circle at 65% 35%, #4c8dff55, transparent 28%),
+    linear-gradient(145deg, #172235, #05070b);
+  box-shadow:
+    0 30px 70px #000,
+    0 0 70px #438dff22;
+  transform: rotate(-7deg);
+  animation: phoneFloat 4s ease-in-out infinite;
+}
+
+@keyframes phoneFloat {
+  0%,100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+  50% {
+    transform: translateY(-13px) rotate(-4deg);
+  }
+}
+
+.mini-camera {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 5px;
+  padding: 7px;
+  border-radius: 15px;
+  background: #05070a;
+}
+
+.mini-camera span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b9dcff, #315f91 30%, #020306 65%);
+  border: 2px solid #26364c;
+}
+
+.mini-logo {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff80;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.configurator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.option {
+  margin-bottom: 28px;
+}
+
+.option label {
+  display: block;
+  margin-bottom: 12px;
+  color: #dce5f2;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.choice,
+.color {
+  cursor: pointer;
+  color: white;
+  background: #0b111a;
+  border: 1px solid #27354a;
+  transition: .25s ease;
+}
+
+.choice {
+  padding: 15px 8px;
+  border-radius: 15px;
+}
+
+.choice b {
+  display: block;
+  font-size: 15px;
+}
+
+.choice small {
+  display: block;
+  margin-top: 5px;
+  color: #8492a6;
+}
+
+.choice:hover,
+.choice.active {
+  transform: translateY(-3px);
+  border-color: #65a9ff;
+  background: #112039;
+  box-shadow: 0 8px 25px #438dff18;
+}
+
+.colors {
+  display: flex;
+  gap: 10px;
+}
+
+.color {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 15px;
+}
+
+.color:hover,
+.color.active {
+  border-color: #65a9ff;
+  transform: translateY(-2px);
+}
+
+.dot {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 7px;
+  border-radius: 50%;
+  border: 2px solid #ffffff30;
+}
+
+.dot.black {
+  background: #080a0d;
+}
+
+.dot.silver {
+  background: linear-gradient(135deg, #f4f4f4, #777);
+}
+
+.dot.blue {
+  background: linear-gradient(135deg, #75b8ff, #172b55);
+}
+
+.color small {
+  color: #aab6c7;
+}
+
+.summary {
+  margin: 8px 0 22px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #070b11;
+  border: 1px solid #202d40;
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+}
+
+.summary span {
+  color: #8290a4;
+}
+
+.summary strong {
+  color: white;
+}
+
+.summary .total {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #202d40;
+}
+
+.summary .total strong {
+  font-size: 24px;
+}
+
+.configurator input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 13px;
+  border: 1px solid #29384d;
+  background: #070b11;
+  color: white;
+  outline: none;
+}
+
+.configurator input:focus {
+  border-color: #65a9ff;
+}
+
+.send-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 20px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  background: white;
+  color: #05070b;
+  font-size: 15px;
+  font-weight: 900;
+  transition: .25s ease;
+}
+
+.send-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px #ffffff20;
+}
+
+.arrow {
+  font-size: 23px;
+}
+
+.email-note {
+  margin-top: 13px;
+  color: #66758a;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .order-card {
+    grid-template-columns: 1fr;
+    padding: 28px 20px;
+  }
+
+  .order-info {
+    text-align: center;
+  }
+
+  .order-info p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .order-phone {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 450px) {
+  .choices {
+    grid-template-columns: 1fr;
+  }
+
+  .colors {
+    flex-direction: column;
+  }
+}
 </style>
-</head>
-<body>
-<div class="wrap">
-<nav><div class="logo">ROBO Fold</div><div><a href="#about">О телефоне</a><a href="#preorder">Предзаказ</a></div></nav>
 
-<div class="hero">
-<div>
-<div class="tag">НОВЫЙ СМАРТФОН</div>
-<h1>ROBO Fold</h1>
-<p>Твой собственный концепт складного телефона. Здесь можно показать характеристики и открыть предзаказ.</p>
-<a class="btn" href="#preorder">Предзаказать</a>
-</div>
-<div class="phone"><div class="camera"><span class="lens"></span><span class="lens"></span></div><div class="screen"></div></div>
-</div>
-
-<section id="about">
-<h2>О телефоне</h2>
-<div class="card">
-<p><b>ROBO Fold</b> — складной смартфон с уникальным дизайном.</p>
-<p>Характеристики, цена, дата выхода и фотографии можно добавить сюда позже.</p>
-</div>
-</section>
-
-<section id="preorder">
-<h2>Предзаказ</h2>
-<div class="card">
-<p>Заполни форму, чтобы оставить заявку на предзаказ.</p>
-<form id="form" action="https://formsubmit.co/Jeae6511@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="Новый предзаказ ROBO Fold">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input id="name" name="Имя" placeholder="Твоё имя" required>
-<input id="phoneInput" name="Телефон" placeholder="Номер телефона" required>
-<select id="color" name="Цвет"><option>Чёрный</option><option>Серебристый</option><option>Синий</option></select>
-<button class="btn" type="submit">Оформить предзаказ</button>
-</form>
-<div class="notice" id="notice">✅ Заявка сохранена на этой странице! Для настоящих заказов нужно подключить сервер или сервис для получения заявок.</div>
-</div>
-</section>
-<footer style="text-align:center;color:#68738b;padding:30px 0">© 2026 ROBO Fold</footer>
-</div>
 <script>
-document.getElementById('form').addEventListener('submit',function(){
- document.getElementById('notice').style.display='block';
+const storageButtons = document.querySelectorAll(".choice");
+const colorButtons = document.querySelectorAll(".color");
+
+const selectedStorage = document.getElementById("selectedStorage");
+const selectedColor = document.getElementById("selectedColor");
+const selectedPrice = document.getElementById("selectedPrice");
+
+const storageInput = document.getElementById("storageInput");
+const colorInput = document.getElementById("colorInput");
+const priceInput = document.getElementById("priceInput");
+
+storageButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    storageButtons.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+
+    const storage = button.dataset.storage;
+    const price = button.dataset.price;
+
+    selectedStorage.textContent = storage;
+    selectedPrice.textContent = "$" + price;
+
+    storageInput.value = storage;
+    priceInput.value = "$" + price;
+  });
+});
+
+colorButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    colorButtons.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+
+    const color = button.dataset.color;
+
+    selectedColor.textContent = color;
+    colorInput.value = color;
+  });
 });
 </script>
-</body>
-</html>
